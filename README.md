@@ -1,6 +1,6 @@
 # Tienda Nova
 
-**Desarrollado por:** Tu Nombre y Apellido
+**Desarrollado por:** Diego Nicolas Cuello
 
 Este es el proyecto de la primera etapa. Contiene:
 - Página de inicio (index.html)
