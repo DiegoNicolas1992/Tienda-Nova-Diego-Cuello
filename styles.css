@@ -22,7 +22,42 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+form label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+}
+
+form input {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  width: 100%;
+  padding: 1em;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #2980b9;
+}
 .logo {
   font-weight: bold;
   font-size: 20px;
