@@ -7,22 +7,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <span class="logo">🛒 Tienda Nova</span>
-    <a href="index.html">Home</a>
-    <a href="electronica.html">Electrónica</a>
-    <a href="ropa.html">Ropa</a>
-    <a href="hogar.html">Hogar</a>
-    <!-- Reemplazamos el link por un botón -->
-    <button id="logoutBtn" style="background: none; border: none; color: blue; cursor: pointer; text-decoration: underline;">Logout</button>
-  </nav>
+  <!-- Menú dinámico -->
+  <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Bienvenido a Tienda Nova</h1>
     <p>Explora nuestras categorías de productos.</p>
 
     <div class="product-grid">
-      <!-- Producto 1 -->
       <div class="product-card">
         <img src="images/auriculares.jpg" alt="Auriculares Bluetooth">
         <h2>Auriculares Bluetooth</h2>
@@ -30,7 +22,6 @@
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 2 -->
       <div class="product-card">
         <img src="images/remera.jpg" alt="Remera de Algodón">
         <h2>Remera de Algodón</h2>
@@ -38,7 +29,6 @@
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 3 -->
       <div class="product-card">
         <img src="images/lavadora.jpg" alt="Lavadora Automática">
         <h2>Lavadora Automática</h2>
@@ -46,7 +36,6 @@
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 4 -->
       <div class="product-card">
         <img src="images/zapatillas.jpg" alt="Zapatillas Urbanas">
         <h2>Zapatillas Urbanas</h2>
@@ -56,11 +45,8 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById("logoutBtn").addEventListener("click", function () {
-      // Simulación de cerrar sesión (en el futuro podés limpiar localStorage)
-      window.location.href = "login.html";
-    });
-  </script>
+  <!-- Scripts -->
+  <script src="navbar.js"></script>
+  <script>cargarNavbar();</script>
 </body>
 </html>
