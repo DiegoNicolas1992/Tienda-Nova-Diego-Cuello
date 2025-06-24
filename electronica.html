@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -7,33 +7,29 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Menú generado dinámicamente -->
   <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Electrónica</h1>
-    <p>Explora nuestra gama de productos electrónicos.</p>
-    
+    <p>Explorá nuestra tecnología de punta.</p>
+
     <div class="product-grid">
-      <!-- Producto 1 -->
       <div class="product-card">
-        <img src="images/smartphone.jpg" alt="smartphone">
+        <img src="images/smartphone.jpg" alt="Smartphone">
         <h2>Smartphone</h2>
         <p>$799</p>
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 2 -->
       <div class="product-card">
-        <img src="images/auriculares.jpg" alt="auriculares">
+        <img src="images/auriculares.jpg" alt="Auriculares Bluetooth">
         <h2>Auriculares Bluetooth</h2>
         <p>$120</p>
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 3 -->
       <div class="product-card">
-        <img src="images/tablet.jpg" alt="tablet">
+        <img src="images/tablet.jpg" alt="Tablet">
         <h2>Tablet Samsung</h2>
         <p>$350</p>
         <button>Comprar</button>
@@ -41,21 +37,7 @@
     </div>
   </div>
 
-  <!-- Script para generar el menú dinámicamente -->
-  <script>
-    const paginas = [
-      { titulo: "Home", url: "index.html" },
-      { titulo: "Electrónica", url: "electronica.html" },
-      { titulo: "Ropa", url: "ropa.html" },
-      { titulo: "Hogar", url: "hogar.html" },
-      { titulo: "Logout", url: "login.html" }
-    ];
-
-    const menuNav = document.getElementById("menuNav");
-    menuNav.innerHTML = `
-      <span class="logo">🛒 Tienda Nova</span>
-      ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join('')}
-    `;
-  </script>
+  <script src="navbar.js"></script>
+  <script>cargarNavbar();</script>
 </body>
 </html>
