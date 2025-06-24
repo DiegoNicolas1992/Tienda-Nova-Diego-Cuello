@@ -11,34 +11,58 @@
 
   <div class="content">
     <h1>Ropa</h1>
-    <p>Explora nuestra gama de ropa para todos los estilos.</p>
+    <p>Estilo y comodidad para todos los días.</p>
 
     <div class="product-grid">
       <div class="product-card">
         <img src="images/remera.jpg" alt="Remera básica">
         <h2>Remera básica</h2>
-        <p>$3.499</p>
-        <button>Comprar</button>
+        <p class="description">Remera 100% algodón, varios colores disponibles.</p>
+        <p class="price">$3.499</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="images/zapatillas.jpg" alt="Zapatillas deportivas">
-        <h2>Zapatillas deportivas</h2>
-        <p>$8.999</p>
-        <button>Comprar</button>
+        <img src="images/zapatillas.jpg" alt="Zapatillas urbanas">
+        <h2>Zapatillas urbanas</h2>
+        <p class="description">Zapatillas livianas para uso diario.</p>
+        <p class="price">$8.999</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
         <img src="images/campera.jpg" alt="Campera de abrigo">
         <h2>Campera de abrigo</h2>
-        <p>$14.500</p>
-        <button>Comprar</button>
+        <p class="description">Impermeable, con capucha y forro térmico.</p>
+        <p class="price">$14.500</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
     </div>
   </div>
 
   <script src="navbar.js"></script>
-  <script>cargarNavbar();</script>
+  <script>
+    cargarNavbar();
+    function cambiarCantidad(btn, cambio) {
+      const cantidadSpan = btn.parentElement.querySelector(".cantidad");
+      let cantidad = parseInt(cantidadSpan.textContent);
+      cantidad += cambio;
+      if (cantidad < 0) cantidad = 0;
+      cantidadSpan.textContent = cantidad;
+    }
+  </script>
 </body>
 </html>
 
