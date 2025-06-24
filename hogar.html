@@ -7,15 +7,13 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Menú generado dinámicamente -->
   <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Hogar</h1>
     <p>Equipá tu casa con productos de calidad.</p>
-    
+
     <div class="product-grid">
-      <!-- Producto 1 -->
       <div class="product-card">
         <img src="images/lavadora.jpg" alt="Lavadora automática">
         <h2>Lavadora automática</h2>
@@ -23,7 +21,6 @@
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 2 -->
       <div class="product-card">
         <img src="images/licuadora.jpg" alt="Licuadora">
         <h2>Licuadora</h2>
@@ -31,7 +28,6 @@
         <button>Comprar</button>
       </div>
 
-      <!-- Producto 3 -->
       <div class="product-card">
         <img src="images/cafetera.jpg" alt="Cafetera eléctrica">
         <h2>Cafetera eléctrica</h2>
@@ -41,21 +37,7 @@
     </div>
   </div>
 
-  <!-- Script para generar el menú dinámicamente -->
-  <script>
-    const paginas = [
-      { titulo: "Home", url: "index.html" },
-      { titulo: "Electrónica", url: "electronica.html" },
-      { titulo: "Ropa", url: "ropa.html" },
-      { titulo: "Hogar", url: "hogar.html" },
-      { titulo: "Logout", url: "login.html" }
-    ];
-
-    const menuNav = document.getElementById("menuNav");
-    menuNav.innerHTML = `
-      <span class="logo">🛒 Tienda Nova</span>
-      ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join('')}
-    `;
-  </script>
+  <script src="navbar.js"></script>
+  <script>cargarNavbar();</script>
 </body>
 </html>
