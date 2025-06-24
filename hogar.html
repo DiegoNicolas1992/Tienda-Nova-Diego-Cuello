@@ -11,33 +11,57 @@
 
   <div class="content">
     <h1>Hogar</h1>
-    <p>Equipá tu casa con productos de calidad.</p>
+    <p>Productos esenciales para tu casa.</p>
 
     <div class="product-grid">
       <div class="product-card">
         <img src="images/lavadora.jpg" alt="Lavadora automática">
         <h2>Lavadora automática</h2>
-        <p>$95.000</p>
-        <button>Comprar</button>
+        <p class="description">Capacidad de 7kg, carga frontal, eficiente y silenciosa.</p>
+        <p class="price">$95.000</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
         <img src="images/licuadora.jpg" alt="Licuadora">
         <h2>Licuadora</h2>
-        <p>$18.300</p>
-        <button>Comprar</button>
+        <p class="description">Vaso de vidrio, 3 velocidades, cuchilla de acero.</p>
+        <p class="price">$18.300</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
         <img src="images/cafetera.jpg" alt="Cafetera eléctrica">
         <h2>Cafetera eléctrica</h2>
-        <p>$22.900</p>
-        <button>Comprar</button>
+        <p class="description">Capacidad para 12 tazas, función mantener caliente.</p>
+        <p class="price">$22.900</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
     </div>
   </div>
 
   <script src="navbar.js"></script>
-  <script>cargarNavbar();</script>
+  <script>
+    cargarNavbar();
+    function cambiarCantidad(btn, cambio) {
+      const cantidadSpan = btn.parentElement.querySelector(".cantidad");
+      let cantidad = parseInt(cantidadSpan.textContent);
+      cantidad += cambio;
+      if (cantidad < 0) cantidad = 0;
+      cantidadSpan.textContent = cantidad;
+    }
+  </script>
 </body>
 </html>
