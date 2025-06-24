@@ -7,46 +7,77 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Menú dinámico -->
   <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Bienvenido a Tienda Nova</h1>
-    <p>Explora nuestras categorías de productos.</p>
+    <p>Explorá nuestras categorías y encontrá lo que necesitás.</p>
+
+    <h2>Productos Destacados</h2>
 
     <div class="product-grid">
       <div class="product-card">
         <img src="images/auriculares.jpg" alt="Auriculares Bluetooth">
         <h2>Auriculares Bluetooth</h2>
-        <p>$5.499</p>
-        <button>Comprar</button>
+        <p class="description">Auriculares con conexión inalámbrica y estuche de carga.</p>
+        <p class="price">$5.499</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="images/remera.jpg" alt="Remera de Algodón">
-        <h2>Remera de Algodón</h2>
-        <p>$3.199</p>
-        <button>Comprar</button>
+        <img src="images/remera.jpg" alt="Remera básica">
+        <h2>Remera básica</h2>
+        <p class="description">Remera 100% algodón, ideal para el día a día.</p>
+        <p class="price">$3.199</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="images/lavadora.jpg" alt="Lavadora Automática">
-        <h2>Lavadora Automática</h2>
-        <p>$95.000</p>
-        <button>Comprar</button>
+        <img src="images/lavadora.jpg" alt="Lavadora automática">
+        <h2>Lavadora automática</h2>
+        <p class="description">Carga frontal, 7kg, eficiente y silenciosa.</p>
+        <p class="price">$95.000</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
 
       <div class="product-card">
-        <img src="images/zapatillas.jpg" alt="Zapatillas Urbanas">
-        <h2>Zapatillas Urbanas</h2>
-        <p>$8.999</p>
-        <button>Comprar</button>
+        <img src="images/zapatillas.jpg" alt="Zapatillas urbanas">
+        <h2>Zapatillas urbanas</h2>
+        <p class="description">Livianas, resistentes y con diseño moderno.</p>
+        <p class="price">$8.999</p>
+        <div class="quantity-controls">
+          <button onclick="cambiarCantidad(this, -1)">-</button>
+          <span class="cantidad">0</span>
+          <button onclick="cambiarCantidad(this, 1)">+</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Navbar y lógica de cantidad -->
   <script src="navbar.js"></script>
-  <script>cargarNavbar();</script>
+  <script>
+    cargarNavbar();
+
+    function cambiarCantidad(btn, cambio) {
+      const cantidadSpan = btn.parentElement.querySelector(".cantidad");
+      let cantidad = parseInt(cantidadSpan.textContent);
+      cantidad += cambio;
+      if (cantidad < 0) cantidad = 0;
+      cantidadSpan.textContent = cantidad;
+    }
+  </script>
 </body>
 </html>
