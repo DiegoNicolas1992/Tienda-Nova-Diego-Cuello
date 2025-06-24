@@ -13,7 +13,8 @@
     <a href="electronica.html">Electrónica</a>
     <a href="ropa.html">Ropa</a>
     <a href="hogar.html">Hogar</a>
-    <a href="login.html">Logout</a>
+    <!-- Reemplazamos el link por un botón -->
+    <button id="logoutBtn" style="background: none; border: none; color: blue; cursor: pointer; text-decoration: underline;">Logout</button>
   </nav>
 
   <div class="content">
@@ -54,5 +55,12 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      // Simulación de cerrar sesión (en el futuro podés limpiar localStorage)
+      window.location.href = "login.html";
+    });
+  </script>
 </body>
 </html>
