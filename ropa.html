@@ -3,48 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ropa - Tienda Nova</title>
+  <title>Electrónica - Tienda Nova</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <span class="logo">🛒 Tienda Nova</span>
-    <a href="index.html">Home</a>
-    <a href="electronica.html">Electrónica</a>
-    <a href="ropa.html">Ropa</a>
-    <a href="hogar.html">Hogar</a>
-    <a href="login.html">Logout</a>
-  </nav>
+  <!-- Menú generado dinámicamente -->
+  <nav id="menuNav"></nav>
 
   <div class="content">
-    <h1>Ropa</h1>
-    <p>Encuentra las últimas tendencias en ropa.</p>
+    <h1>Electrónica</h1>
+    <p>Explora nuestra gama de productos electrónicos.</p>
     
     <div class="product-grid">
       <!-- Producto 1 -->
       <div class="product-card">
-        <img src="images/remera.jpg" alt="remeralgodon">
-        <h2>Remera de Algodón</h2>
-        <p>$1.999</p>
+        <img src="images/smartphone.jpg" alt="smartphone">
+        <h2>Smartphone</h2>
+        <p>$799</p>
         <button>Comprar</button>
       </div>
 
       <!-- Producto 2 -->
       <div class="product-card">
-        <img src="images/pantalon.jpg" alt="pantalon">
-        <h2>Pantalón Deportivo</h2>
-        <p>$1.299</p>
+        <img src="images/auriculares.jpg" alt="auriculares">
+        <h2>Auriculares Bluetooth</h2>
+        <p>$120</p>
         <button>Comprar</button>
       </div>
 
       <!-- Producto 3 -->
       <div class="product-card">
-        <img src="images/zapatillas.jpg" alt="zapatillaurbanas">
-        <h2>Zapatillas Urbanas</h2>
-        <p>$2.599</p>
+        <img src="images/tablet.jpg" alt="tablet">
+        <h2>Tablet Samsung</h2>
+        <p>$350</p>
         <button>Comprar</button>
       </div>
     </div>
   </div>
+
+  <!-- Script para generar el menú dinámicamente -->
+  <script>
+    const paginas = [
+      { titulo: "Home", url: "index.html" },
+      { titulo: "Electrónica", url: "electronica.html" },
+      { titulo: "Ropa", url: "ropa.html" },
+      { titulo: "Hogar", url: "hogar.html" },
+      { titulo: "Logout", url: "login.html" }
+    ];
+
+    const menuNav = document.getElementById("menuNav");
+    menuNav.innerHTML = `
+      <span class="logo">🛒 Tienda Nova</span>
+      ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join('')}
+    `;
+  </script>
 </body>
 </html>
