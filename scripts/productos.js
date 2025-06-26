@@ -1,15 +1,12 @@
-// Cargar productos según la categoría
 function cargarProductos(categoria) {
   fetch("data/productos.json")
     .then(res => res.json())
     .then(data => {
       const productos = data[categoria];
       mostrarProductos(productos);
-    })
-    .catch(err => console.error("Error al cargar productos:", err));
+    });
 }
 
-// Mostrar productos en el grid
 function mostrarProductos(productos) {
   const grid = document.querySelector(".product-grid");
   grid.innerHTML = productos.map(p => `
@@ -23,17 +20,16 @@ function mostrarProductos(productos) {
         <span class="cantidad">0</span>
         <button onclick="aumentar(this)">+</button>
       </div>
+      <button class="btn-carrito" onclick="agregarAlCarrito('${p.titulo}')">Añadir al carrito</button>
     </div>
   `).join("");
 }
 
-// Aumentar cantidad
 function aumentar(btn) {
   const cantidad = btn.parentElement.querySelector(".cantidad");
   cantidad.textContent = parseInt(cantidad.textContent) + 1;
 }
 
-// Disminuir cantidad
 function disminuir(btn) {
   const cantidad = btn.parentElement.querySelector(".cantidad");
   if (parseInt(cantidad.textContent) > 0) {
@@ -41,3 +37,6 @@ function disminuir(btn) {
   }
 }
 
+function agregarAlCarrito(producto) {
+  alert(`¡${producto} añadido al carrito!`);
+}
