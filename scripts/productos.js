@@ -17,10 +17,10 @@ function mostrarProductos(productos) {
       <p><strong>$${p.precio}</strong></p>
       <div class="cantidad-control">
         <button onclick="disminuir(this)">-</button>
-        <span class="cantidad">0</span>
+        <span class="cantidad">1</span>
         <button onclick="aumentar(this)">+</button>
       </div>
-      <button class="btn-carrito" onclick="agregarAlCarrito('${p.titulo}', ${p.precio}, this)">Agregar al carrito</button>
+      <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(p)})'>Añadir al carrito</button>
     </div>
   `).join("");
 }
@@ -32,19 +32,23 @@ function aumentar(btn) {
 
 function disminuir(btn) {
   const cantidad = btn.parentElement.querySelector(".cantidad");
-  if (parseInt(cantidad.textContent) > 0) {
-    cantidad.textContent = parseInt(cantidad.textContent) - 1;
+  const valor = parseInt(cantidad.textContent);
+  if (valor > 1) {
+    cantidad.textContent = valor - 1;
   }
 }
 
-function agregarAlCarrito(titulo, precio, btn) {
-  const cantidad = parseInt(btn.parentElement.querySelector(".cantidad").textContent);
-  if (cantidad > 0) {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito.push({ titulo, precio, cantidad });
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert("Producto agregado al carrito");
+function agregarAlCarrito(producto) {
+  const cantidad = event.target.parentElement.querySelector(".cantidad").textContent;
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const existente = carrito.find(p => p.titulo === producto.titulo);
+
+  if (existente) {
+    existente.cantidad += parseInt(cantidad);
   } else {
-    alert("Seleccioná una cantidad mayor a 0");
+    carrito.push({ ...producto, cantidad: parseInt(cantidad) });
   }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  alert("Producto añadido al carrito.");
 }
