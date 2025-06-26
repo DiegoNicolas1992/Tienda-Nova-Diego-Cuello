@@ -1,44 +1,37 @@
 function cargarProductos(categoria) {
   fetch("data/productos.json")
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
       const productos = data[categoria];
-      const grid = document.querySelector(".product-grid");
-
-      if (!productos || productos.length === 0) {
-        grid.innerHTML = "<p>No hay productos disponibles.</p>";
-        return;
-      }
-
-      grid.innerHTML = productos.map(producto => `
-        <div class="product-card">
-          <img src="${producto.imagen}" alt="${producto.titulo}">
-          <h2>${producto.titulo}</h2>
-          <p>${producto.descripcion}</p>
-          <p><strong>$${producto.precio}</strong></p>
-          <div class="cantidad-control">
-            <button onclick="disminuir(this)">-</button>
-            <span class="cantidad">0</span>
-            <button onclick="aumentar(this)">+</button>
-          </div>
-        </div>
-      `).join('');
-    })
-    .catch(error => {
-      console.error("Error al cargar productos:", error);
+      mostrarProductos(productos);
     });
 }
 
-// Controlar botones de cantidad
-function aumentar(boton) {
-  const cantidad = boton.parentElement.querySelector(".cantidad");
+function mostrarProductos(productos) {
+  const grid = document.querySelector(".product-grid");
+  grid.innerHTML = productos.map(p => `
+    <div class="product-card">
+      <img src="${p.imagen}" alt="${p.titulo}">
+      <h2>${p.titulo}</h2>
+      <p>${p.descripcion}</p>
+      <p><strong>$${p.precio}</strong></p>
+      <div class="cantidad-control">
+        <button onclick="disminuir(this)">-</button>
+        <span class="cantidad">0</span>
+        <button onclick="aumentar(this)">+</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function aumentar(btn) {
+  const cantidad = btn.parentElement.querySelector(".cantidad");
   cantidad.textContent = parseInt(cantidad.textContent) + 1;
 }
 
-function disminuir(boton) {
-  const cantidad = boton.parentElement.querySelector(".cantidad");
-  const valor = parseInt(cantidad.textContent);
-  if (valor > 0) {
-    cantidad.textContent = valor - 1;
+function disminuir(btn) {
+  const cantidad = btn.parentElement.querySelector(".cantidad");
+  if (parseInt(cantidad.textContent) > 0) {
+    cantidad.textContent = parseInt(cantidad.textContent) - 1;
   }
 }
