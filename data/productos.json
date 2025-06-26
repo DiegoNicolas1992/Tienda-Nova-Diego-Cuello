@@ -15,7 +15,7 @@
     {
       "imagen": "images/tablet.jpg",
       "titulo": "Tablet Samsung",
-      "descripcion": "10 pulgadas, 64GB.",
+      "descripcion": "10 pulgadas, 64 GB.",
       "precio": 35000
     }
   ],
@@ -43,7 +43,7 @@
     {
       "imagen": "images/lavadora.jpg",
       "titulo": "Lavadora automática",
-      "descripcion": "Capacidad 8kg, bajo consumo.",
+      "descripcion": "Capacidad 8 kg, bajo consumo.",
       "precio": 95000
     },
     {
