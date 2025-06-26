@@ -15,7 +15,7 @@
     {
       "imagen": "images/tablet.jpg",
       "titulo": "Tablet Samsung",
-      "descripcion": "Ideal para lectura y streaming.",
+      "descripcion": "Pantalla de 10 pulgadas, Android.",
       "precio": 350
     }
   ],
@@ -35,7 +35,7 @@
     {
       "imagen": "images/campera.jpg",
       "titulo": "Campera de abrigo",
-      "descripcion": "Ideal para el invierno.",
+      "descripcion": "Ideal para invierno.",
       "precio": 14500
     }
   ],
@@ -60,3 +60,4 @@
     }
   ]
 }
+
