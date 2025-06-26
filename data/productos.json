@@ -1,1 +1,56 @@
-
+{
+  "electronica": [
+    {
+      "imagen": "images/smartphone.jpg",
+      "titulo": "Smartphone",
+      "descripcion": "Celular gama media con cámara dual.",
+      "precio": 799
+    },
+    {
+      "imagen": "images/auriculares.jpg",
+      "titulo": "Auriculares Bluetooth",
+      "descripcion": "Inalámbricos con cancelación de ruido.",
+      "precio": 120
+    }
+  ],
+  "ropa": [
+    {
+      "imagen": "images/remera.jpg",
+      "titulo": "Remera básica",
+      "descripcion": "100% algodón, varios colores.",
+      "precio": 3499
+    },
+    {
+      "imagen": "images/zapatillas.jpg",
+      "titulo": "Zapatillas deportivas",
+      "descripcion": "Urbanas y cómodas para el día a día.",
+      "precio": 8999
+    },
+    {
+      "imagen": "images/campera.jpg",
+      "titulo": "Campera de abrigo",
+      "descripcion": "Ideal para invierno.",
+      "precio": 14500
+    }
+  ],
+  "hogar": [
+    {
+      "imagen": "images/lavadora.jpg",
+      "titulo": "Lavadora automática",
+      "descripcion": "Capacidad 8kg, bajo consumo.",
+      "precio": 95000
+    },
+    {
+      "imagen": "images/licuadora.jpg",
+      "titulo": "Licuadora",
+      "descripcion": "Alta potencia y diseño compacto.",
+      "precio": 18300
+    },
+    {
+      "imagen": "images/cafetera.jpg",
+      "titulo": "Cafetera eléctrica",
+      "descripcion": "Para café filtrado rápido.",
+      "precio": 22900
+    }
+  ]
+}
