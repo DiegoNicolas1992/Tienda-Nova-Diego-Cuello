@@ -4,19 +4,19 @@
       "imagen": "images/smartphone.jpg",
       "titulo": "Smartphone",
       "descripcion": "Celular gama media con cámara dual.",
-      "precio": 799
+      "precio": 79900
     },
     {
       "imagen": "images/auriculares.jpg",
       "titulo": "Auriculares Bluetooth",
       "descripcion": "Inalámbricos con cancelación de ruido.",
-      "precio": 120
+      "precio": 12000
     },
     {
       "imagen": "images/tablet.jpg",
       "titulo": "Tablet Samsung",
-      "descripcion": "Pantalla de 10 pulgadas, Android.",
-      "precio": 350
+      "descripcion": "10 pulgadas, 64GB.",
+      "precio": 35000
     }
   ],
   "ropa": [
@@ -60,4 +60,3 @@
     }
   ]
 }
-
