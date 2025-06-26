@@ -4,7 +4,8 @@ function cargarNavbar() {
     { titulo: "Home", url: "index.html" },
     { titulo: "Electrónica", url: "electronica.html" },
     { titulo: "Ropa", url: "ropa.html" },
-    { titulo: "Hogar", url: "hogar.html" }
+    { titulo: "Hogar", url: "hogar.html" },
+    { titulo: "Carrito", url: "carrito.html" } // 👈 Agregado
   ];
 
   const menuNav = document.getElementById("menuNav");
@@ -14,4 +15,11 @@ function cargarNavbar() {
     ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join("")}
     <a href="#" onclick="logout()" class="logout">Logout</a>
   `;
+}
+
+// Función para cerrar sesión
+function logout() {
+  localStorage.removeItem("usuarioLogueado");
+  localStorage.removeItem("carrito");
+  window.location.href = "login.html";
 }
