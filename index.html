@@ -18,43 +18,40 @@
     <h1>Bienvenido a Tienda Nova</h1>
     <p>Productos destacados de cada categoría.</p>
 
-    <section>
-      <h2>📱 Electrónica</h2>
-      <div class="product-grid" id="destacados-electronica"></div>
-    </section>
+    <h2>📱 Electrónica</h2>
+    <div class="product-grid" id="destacados-electronica"></div>
 
-    <section>
-      <h2>👕 Ropa</h2>
-      <div class="product-grid" id="destacados-ropa"></div>
-    </section>
+    <h2>👕 Ropa</h2>
+    <div class="product-grid" id="destacados-ropa"></div>
 
-    <section>
-      <h2>🏠 Hogar</h2>
-      <div class="product-grid" id="destacados-hogar"></div>
-    </section>
+    <h2>🏠 Hogar</h2>
+    <div class="product-grid" id="destacados-hogar"></div>
   </div>
 
   <script src="scripts/navbar.js"></script>
   <script>cargarNavbar();</script>
 
+  <script src="scripts/productos.js"></script>
   <script>
     fetch("data/productos.json")
-      .then(res => res.json())
+      .then(response => response.json())
       .then(data => {
-        mostrarDestacado(data.electronica, "destacados-electronica");
-        mostrarDestacado(data.ropa, "destacados-ropa");
-        mostrarDestacado(data.hogar, "destacados-hogar");
+        mostrarDestacado("electronica", data.electronica, "destacados-electronica");
+        mostrarDestacado("ropa", data.ropa, "destacados-ropa");
+        mostrarDestacado("hogar", data.hogar, "destacados-hogar");
       });
 
-    function mostrarDestacado(productos, id) {
-      const container = document.getElementById(id);
-      const producto = productos[0]; // Solo el primero como destacado
-      container.innerHTML = `
+    function mostrarDestacado(categoria, productos, contenedorID) {
+      const contenedor = document.getElementById(contenedorID);
+      if (!contenedor || productos.length === 0) return;
+
+      const prod = productos[0];
+      contenedor.innerHTML = `
         <div class="product-card">
-          <img src="${producto.imagen}" alt="${producto.titulo}">
-          <h2>${producto.titulo}</h2>
-          <p>${producto.descripcion}</p>
-          <p><strong>$${producto.precio}</strong></p>
+          <img src="${prod.imagen}" alt="${prod.titulo}">
+          <h2>${prod.titulo}</h2>
+          <p>${prod.descripcion}</p>
+          <p><strong>$${prod.precio}</strong></p>
           <div class="cantidad-control">
             <button onclick="disminuir(this)">-</button>
             <span class="cantidad">0</span>
@@ -62,18 +59,6 @@
           </div>
         </div>
       `;
-    }
-
-    function aumentar(btn) {
-      const cantidad = btn.parentElement.querySelector(".cantidad");
-      cantidad.textContent = parseInt(cantidad.textContent) + 1;
-    }
-
-    function disminuir(btn) {
-      const cantidad = btn.parentElement.querySelector(".cantidad");
-      if (parseInt(cantidad.textContent) > 0) {
-        cantidad.textContent = parseInt(cantidad.textContent) - 1;
-      }
     }
   </script>
 </body>
