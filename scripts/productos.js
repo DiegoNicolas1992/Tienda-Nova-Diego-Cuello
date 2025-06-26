@@ -1,5 +1,3 @@
-// scripts/productos.js
-
 function cargarProductos(categoria) {
   fetch("data/productos.json")
     .then(res => res.json())
@@ -22,7 +20,7 @@ function mostrarProductos(productos) {
         <span class="cantidad">0</span>
         <button onclick="aumentar(this)">+</button>
       </div>
-      <button onclick="agregarAlCarrito(this, '${p.titulo}', ${p.precio})">Agregar al carrito</button>
+      <button class="add-to-cart">Añadir al carrito</button>
     </div>
   `).join("");
 }
@@ -38,21 +36,3 @@ function disminuir(btn) {
     cantidad.textContent = parseInt(cantidad.textContent) - 1;
   }
 }
-
-function agregarAlCarrito(btn, titulo, precio) {
-  const cantidad = parseInt(btn.parentElement.querySelector(".cantidad").textContent);
-  if (cantidad === 0) return;
-
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  const existente = carrito.find(item => item.titulo === titulo);
-  if (existente) {
-    existente.cantidad += cantidad;
-  } else {
-    carrito.push({ titulo, precio, cantidad });
-  }
-
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  alert("Producto añadido al carrito");
-}
-
