@@ -1,40 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css">
+function cargarNavbar() {
+  fetch("data/menu.json")
+    .then(res => res.json())
+    .then(menu => {
+      const nav = document.getElementById("menuNav");
+      nav.innerHTML = `
+        <span class="logo">🛒 Tienda Nova</span>
+        ${menu.map(item => {
+          if (item.titulo === "Logout") {
+            return `<a href="#" onclick="logout()">${item.titulo}</a>`;
+          }
+          return `<a href="${item.url}">${item.titulo}</a>`;
+        }).join("")}
+      `;
+    });
+}
 
-  <!-- Si ya está logueado, lo lleva directo a index -->
-  <script>
-    if (localStorage.getItem("usuarioLogueado") === "true") {
-      window.location.href = "index.html";
-    }
-  </script>
-</head>
-<body>
-  <nav id="menuNav"></nav>
-
-  <div class="content">
-    <h1>Iniciar sesión</h1>
-    <p>Bienvenido. Hacé clic para entrar a Tienda Nova.</p>
-    <button onclick="login()">Iniciar sesión</button>
-  </div>
-
-  <script src="scripts/navbar.js"></script>
-  <script>cargarNavbar();</script>
-
-  <script>
-    function login() {
-      localStorage.setItem("usuarioLogueado", "true");
-      window.location.href = "index.html";
-    }
-  </script>
-</body>
-</html>
-
-
-  
-  
-  
+function logout() {
+  localStorage.removeItem("usuarioLogueado");
+  window.location.href = "login.html";
+}
