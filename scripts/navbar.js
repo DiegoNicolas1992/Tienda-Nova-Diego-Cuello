@@ -1,3 +1,6 @@
+// scripts/navbar.js
+
+// Genera el menú de navegación dinámicamente
 function cargarNavbar() {
   const paginas = [
     { titulo: "Home", url: "index.html" },
@@ -16,6 +19,7 @@ function cargarNavbar() {
   `;
 }
 
+// Función para cerrar sesión
 function logout() {
   localStorage.removeItem("usuarioLogueado");
   window.location.href = "login.html";
