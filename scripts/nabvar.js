@@ -1,11 +1,23 @@
 function cargarNavbar() {
-  fetch("data/menu.json")
-    .then(res => res.json())
-    .then(menu => {
-      const nav = document.getElementById("menuNav");
-      nav.innerHTML = `
-        <span class="logo">🛒 Tienda Nova</span>
-        ${menu.map(item => `<a href="${item.url}">${item.titulo}</a>`).join("")}
-      `;
-    });
+  const paginas = [
+    { titulo: "Home", url: "index.html" },
+    { titulo: "Electrónica", url: "electronica.html" },
+    { titulo: "Ropa", url: "ropa.html" },
+    { titulo: "Hogar", url: "hogar.html" }
+  ];
+
+  const menuNav = document.getElementById("menuNav");
+
+  // Generar el menú dinámico
+  menuNav.innerHTML = `
+    <span class="logo">🛒 Tienda Nova</span>
+    ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join("")}
+    <a href="#" onclick="logout()" class="logout">Logout</a>
+  `;
+}
+
+// Función para cerrar sesión
+function logout() {
+  localStorage.removeItem("usuarioLogueado");
+  window.location.href = "login.html";
 }
