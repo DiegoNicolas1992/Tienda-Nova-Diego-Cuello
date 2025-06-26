@@ -4,64 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Electrónica - Tienda Nova</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Electrónica</h1>
-    <p>La mejor tecnología al mejor precio.</p>
+    <p>Descubrí lo último en tecnología.</p>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="images/smartphone.jpg" alt="Smartphone">
-        <h2>Smartphone</h2>
-        <p class="description">Pantalla OLED, cámara de 64MP, batería de larga duración.</p>
-        <p class="price">$799</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/auriculares.jpg" alt="Auriculares Bluetooth">
-        <h2>Auriculares Bluetooth</h2>
-        <p class="description">Inalámbricos, con cancelación de ruido, estuche de carga.</p>
-        <p class="price">$120</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/tablet.jpg" alt="Tablet">
-        <h2>Tablet Samsung</h2>
-        <p class="description">10.1 pulgadas, 4GB RAM, 64GB almacenamiento.</p>
-        <p class="price">$350</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-    </div>
+    <div class="product-grid"></div>
   </div>
 
-  <script src="navbar.js"></script>
-  <script>
-    cargarNavbar();
-    function cambiarCantidad(btn, cambio) {
-      const cantidadSpan = btn.parentElement.querySelector(".cantidad");
-      let cantidad = parseInt(cantidadSpan.textContent);
-      cantidad += cambio;
-      if (cantidad < 0) cantidad = 0;
-      cantidadSpan.textContent = cantidad;
-    }
-  </script>
+  <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
+
+  <script src="scripts/productos.js"></script>
+  <script>cargarProductos("electronica");</script>
 </body>
 </html>
