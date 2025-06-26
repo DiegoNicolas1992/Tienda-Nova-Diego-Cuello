@@ -20,7 +20,7 @@ function mostrarProductos(productos) {
         <span class="cantidad">0</span>
         <button onclick="aumentar(this)">+</button>
       </div>
-      <button class="add-to-cart">Añadir al carrito</button>
+      <button class="btn-carrito" onclick="agregarAlCarrito('${p.titulo}', ${p.precio}, this)">Agregar al carrito</button>
     </div>
   `).join("");
 }
@@ -34,5 +34,17 @@ function disminuir(btn) {
   const cantidad = btn.parentElement.querySelector(".cantidad");
   if (parseInt(cantidad.textContent) > 0) {
     cantidad.textContent = parseInt(cantidad.textContent) - 1;
+  }
+}
+
+function agregarAlCarrito(titulo, precio, btn) {
+  const cantidad = parseInt(btn.parentElement.querySelector(".cantidad").textContent);
+  if (cantidad > 0) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.push({ titulo, precio, cantidad });
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert("Producto agregado al carrito");
+  } else {
+    alert("Seleccioná una cantidad mayor a 0");
   }
 }
