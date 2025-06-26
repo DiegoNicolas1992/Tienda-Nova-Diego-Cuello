@@ -4,80 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tienda Nova</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Bienvenido a Tienda Nova</h1>
-    <p>Explorá nuestras categorías y encontrá lo que necesitás.</p>
+    <p>Productos destacados de cada categoría.</p>
 
-    <h2>Productos Destacados</h2>
-
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="images/auriculares.jpg" alt="Auriculares Bluetooth">
-        <h2>Auriculares Bluetooth</h2>
-        <p class="description">Auriculares con conexión inalámbrica y estuche de carga.</p>
-        <p class="price">$5.499</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/remera.jpg" alt="Remera básica">
-        <h2>Remera básica</h2>
-        <p class="description">Remera 100% algodón, ideal para el día a día.</p>
-        <p class="price">$3.199</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/lavadora.jpg" alt="Lavadora automática">
-        <h2>Lavadora automática</h2>
-        <p class="description">Carga frontal, 7kg, eficiente y silenciosa.</p>
-        <p class="price">$95.000</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/zapatillas.jpg" alt="Zapatillas urbanas">
-        <h2>Zapatillas urbanas</h2>
-        <p class="description">Livianas, resistentes y con diseño moderno.</p>
-        <p class="price">$8.999</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-    </div>
+    <div class="product-grid"></div>
   </div>
 
-  <!-- Navbar y lógica de cantidad -->
-  <script src="navbar.js"></script>
-  <script>
-    cargarNavbar();
+  <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
 
-    function cambiarCantidad(btn, cambio) {
-      const cantidadSpan = btn.parentElement.querySelector(".cantidad");
-      let cantidad = parseInt(cantidadSpan.textContent);
-      cantidad += cambio;
-      if (cantidad < 0) cantidad = 0;
-      cantidadSpan.textContent = cantidad;
-    }
+  <script src="scripts/productos.js"></script>
+  <script>
+    // Mostrar productos destacados combinados de todas las categorías
+    fetch('data/productos.json')
+      .then(res => res.json())
+      .then(data => {
+        const productos = [...data.electronica.slice(0,1), ...data.ropa.slice(0,1), ...data.hogar.slice(0,1)];
+        mostrarProductos(productos);
+      });
   </script>
 </body>
 </html>
