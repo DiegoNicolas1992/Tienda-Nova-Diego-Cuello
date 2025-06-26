@@ -11,6 +11,12 @@
       "titulo": "Auriculares Bluetooth",
       "descripcion": "Inalámbricos con cancelación de ruido.",
       "precio": 120
+    },
+    {
+      "imagen": "images/tablet.jpg",
+      "titulo": "Tablet Samsung",
+      "descripcion": "Pantalla HD de 10 pulgadas.",
+      "precio": 350
     }
   ],
   "ropa": [
