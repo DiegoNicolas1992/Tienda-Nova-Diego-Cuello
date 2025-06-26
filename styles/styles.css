@@ -1,42 +1,132 @@
-function cargarProductos(categoria) {
-  fetch("data/productos.json")
-    .then(res => res.json())
-    .then(data => {
-      const productos = data[categoria];
-      mostrarProductos(productos);
-    });
+/* ======== GENERAL ======== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f9f9f9;
 }
 
-function mostrarProductos(productos) {
-  const grid = document.querySelector(".product-grid");
-  grid.innerHTML = productos.map(p => `
-    <div class="product-card">
-      <img src="${p.imagen}" alt="${p.titulo}">
-      <h2>${p.titulo}</h2>
-      <p>${p.descripcion}</p>
-      <p><strong>$${p.precio}</strong></p>
-      <div class="cantidad-control">
-        <button onclick="disminuir(this)">-</button>
-        <span class="cantidad">0</span>
-        <button onclick="aumentar(this)">+</button>
-      </div>
-      <button class="btn-carrito" onclick="agregarAlCarrito('${p.titulo}')">Añadir al carrito</button>
-    </div>
-  `).join("");
+.content {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-function aumentar(btn) {
-  const cantidad = btn.parentElement.querySelector(".cantidad");
-  cantidad.textContent = parseInt(cantidad.textContent) + 1;
+/* ======== NAVBAR ======== */
+nav {
+  background-color: #333;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-function disminuir(btn) {
-  const cantidad = btn.parentElement.querySelector(".cantidad");
-  if (parseInt(cantidad.textContent) > 0) {
-    cantidad.textContent = parseInt(cantidad.textContent) - 1;
+nav .logo {
+  font-weight: bold;
+  color: white;
+  margin-right: auto;
+  font-size: 1.2em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ======== PRODUCT GRID ======== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* ======== PRODUCT CARD ======== */
+.product-card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}
+
+.product-card h2 {
+  font-size: 1.1em;
+  margin: 10px 0 5px;
+}
+
+.product-card p {
+  margin: 5px 0;
+}
+
+/* ======== CANTIDAD CONTROL ======== */
+.cantidad-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cantidad-control button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cantidad-control button:hover {
+  background-color: #0056b3;
+}
+
+.cantidad {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* ======== BOTÓN AÑADIR AL CARRITO ======== */
+.btn-carrito {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-carrito:hover {
+  background-color: #218838;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
-}
 
-function agregarAlCarrito(producto) {
-  alert(`¡${producto} añadido al carrito!`);
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
