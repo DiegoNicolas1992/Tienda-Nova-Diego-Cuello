@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Electrónica - Tienda Nova</title>
   <link rel="stylesheet" href="styles/styles.css">
+
+  <script>
+    if (localStorage.getItem("usuarioLogueado") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
   <nav id="menuNav"></nav>
