@@ -1,1 +1,21 @@
+{
+  "html": [
+    "index.html",
+    "ropa.html",
+    "hogar.html",
+    "electronica.html",
+    "login.html"
+  ],
+  "carpetas": {
+    "data": ["menu.json", "productos.json"],
+    "scripts": ["navbar.js", "productos.js"],
+    "styles": ["styles.css"],
+    "images": ["*.jpg (productos)"]
+  },
+  "funcionalidad": {
+    "navbar": "Se genera dinámicamente desde menu.json",
+    "productos": "Se cargan dinámicamente desde productos.json por categoría",
+    "cantidad": "Cada card tiene control + y - para cantidad seleccionada"
+  }
+}
 
