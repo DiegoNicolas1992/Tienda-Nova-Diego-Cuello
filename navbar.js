@@ -12,3 +12,10 @@ function cargarNavbar() {
     })
     .catch(error => console.error("Error al cargar el menú:", error));
 }
+document.addEventListener("click", function (e) {
+  if (e.target.tagName === "A" && e.target.textContent === "Logout") {
+    e.preventDefault();
+    localStorage.removeItem("usuarioLogueado");
+    window.location.href = "login.html";
+  }
+});
