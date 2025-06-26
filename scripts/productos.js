@@ -15,12 +15,16 @@ function mostrarProductos(productos) {
       <h2>${p.titulo}</h2>
       <p>${p.descripcion}</p>
       <p><strong>$${p.precio}</strong></p>
+      
       <div class="cantidad-control">
         <button onclick="disminuir(this)">-</button>
         <span class="cantidad">0</span>
         <button onclick="aumentar(this)">+</button>
       </div>
-      <button class="btn-carrito" onclick="agregarAlCarrito('${p.titulo}')">Añadir al carrito</button>
+
+      <button class="btn-carrito" onclick="agregarAlCarrito(this, '${p.titulo}', ${p.precio})">
+        Añadir al carrito
+      </button>
     </div>
   `).join("");
 }
@@ -37,6 +41,32 @@ function disminuir(btn) {
   }
 }
 
-function agregarAlCarrito(producto) {
-  alert(`¡${producto} añadido al carrito!`);
+function agregarAlCarrito(boton, titulo, precio) {
+  const cantidad = parseInt(
+    boton.parentElement.querySelector(".cantidad").textContent
+  );
+
+  if (cantidad > 0) {
+    const producto = {
+      titulo,
+      precio,
+      cantidad
+    };
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const existente = carrito.find(p => p.titulo === titulo);
+
+    if (existente) {
+      existente.cantidad += cantidad;
+    } else {
+      carrito.push(producto);
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    alert(`✅ Añadido ${cantidad} x ${titulo} al carrito.`);
+  } else {
+    alert("⚠️ Seleccioná al menos una unidad.");
+  }
 }
