@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tienda Nova</title>
   <link rel="stylesheet" href="styles/styles.css">
+  
   <script>
+    // Redirección si el usuario no está logueado
     if (localStorage.getItem("usuarioLogueado") !== "true") {
       window.location.href = "login.html";
     }
@@ -33,6 +35,7 @@
 
   <script src="scripts/productos.js"></script>
   <script>
+    // Mostrar el primer producto de cada categoría
     fetch("data/productos.json")
       .then(response => response.json())
       .then(data => {
@@ -45,7 +48,7 @@
       const contenedor = document.getElementById(contenedorID);
       if (!contenedor || productos.length === 0) return;
 
-      const prod = productos[0];
+      const prod = productos[0]; // solo el primero
       contenedor.innerHTML = `
         <div class="product-card">
           <img src="${prod.imagen}" alt="${prod.titulo}">
@@ -63,3 +66,4 @@
   </script>
 </body>
 </html>
+
