@@ -15,7 +15,7 @@
     {
       "imagen": "images/tablet.jpg",
       "titulo": "Tablet Samsung",
-      "descripcion": "Pantalla HD de 10 pulgadas.",
+      "descripcion": "Pantalla HD y batería de larga duración.",
       "precio": 350
     }
   ],
@@ -60,5 +60,3 @@
     }
   ]
 }
-
-  
