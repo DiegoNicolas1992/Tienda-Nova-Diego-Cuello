@@ -4,63 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hogar - Tienda Nova</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <nav id="menuNav"></nav>
 
   <div class="content">
     <h1>Hogar</h1>
-    <p>Productos esenciales para tu casa.</p>
+    <p>Productos para tu casa, cocina y confort.</p>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="images/lavadora.jpg" alt="Lavadora automática">
-        <h2>Lavadora automática</h2>
-        <p class="description">Capacidad de 7kg, carga frontal, eficiente y silenciosa.</p>
-        <p class="price">$95.000</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/licuadora.jpg" alt="Licuadora">
-        <h2>Licuadora</h2>
-        <p class="description">Vaso de vidrio, 3 velocidades, cuchilla de acero.</p>
-        <p class="price">$18.300</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="images/cafetera.jpg" alt="Cafetera eléctrica">
-        <h2>Cafetera eléctrica</h2>
-        <p class="description">Capacidad para 12 tazas, función mantener caliente.</p>
-        <p class="price">$22.900</p>
-        <div class="quantity-controls">
-          <button onclick="cambiarCantidad(this, -1)">-</button>
-          <span class="cantidad">0</span>
-          <button onclick="cambiarCantidad(this, 1)">+</button>
-        </div>
-      </div>
-    </div>
+    <div class="product-grid"></div>
   </div>
 
-  <script src="navbar.js"></script>
+  <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
+
+  <script src="scripts/productos.js"></script>
+  <script>cargarProductos("hogar");</script>
+</body>
+</html>
+✅ index.html (productos destacados)
+html
+Copiar
+Editar
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda Nova</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <nav id="menuNav"></nav>
+
+  <div class="content">
+    <h1>Bienvenido a Tienda Nova</h1>
+    <p>Productos destacados de cada categoría.</p>
+
+    <h2>📱 Electrónica</h2>
+    <div class="product-grid" id="destacados-electronica"></div>
+
+    <h2>👕 Ropa</h2>
+    <div class="product-grid" id="destacados-ropa"></div>
+
+    <h2>🏠 Hogar</h2>
+    <div class="product-grid" id="destacados-hogar"></div>
+  </div>
+
+  <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
+
+  <script src="scripts/productos.js"></script>
   <script>
-    cargarNavbar();
-    function cambiarCantidad(btn, cambio) {
-      const cantidadSpan = btn.parentElement.querySelector(".cantidad");
-      let cantidad = parseInt(cantidadSpan.textContent);
-      cantidad += cambio;
-      if (cantidad < 0) cantidad = 0;
-      cantidadSpan.textContent = cantidad;
+    fetch("data/productos.json")
+      .then(response => response.json())
+      .then(data => {
+        mostrarDestacado("electronica", data.electronica, "destacados-electronica");
+        mostrarDestacado("ropa", data.ropa, "destacados-ropa");
+        mostrarDestacado("hogar", data.hogar, "destacados-hogar");
+      });
+
+    function mostrarDestacado(categoria, productos, contenedorID) {
+      const contenedor = document.getElementById(contenedorID);
+      if (!contenedor || productos.length === 0) return;
+
+      const prod = productos[0];
+      contenedor.innerHTML = `
+        <div class="product-card">
+          <img src="${prod.imagen}" alt="${prod.titulo}">
+          <h2>${prod.titulo}</h2>
+          <p>${prod.descripcion}</p>
+          <p><strong>$${prod.precio}</strong></p>
+          <div class="cantidad-control">
+            <button onclick="disminuir(this)">-</button>
+            <span class="cantidad">0</span>
+            <button onclick="aumentar(this)">+</button>
+          </div>
+        </div>
+      `;
     }
   </script>
 </body>
