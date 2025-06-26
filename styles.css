@@ -112,3 +112,9 @@ nav a:hover {
     grid-template-columns: 1fr;
   }
 }
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
