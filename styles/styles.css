@@ -1,4 +1,3 @@
-/* ======== GENERAL ======== */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -11,7 +10,7 @@ body {
   margin: auto;
 }
 
-/* ======== NAVBAR ======== */
+/* NAVBAR */
 nav {
   background-color: #333;
   padding: 1em;
@@ -36,115 +35,4 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
-}
-
-/* ======== PRODUCT GRID ======== */
-.product-grid,
-.carrito-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* ======== PRODUCT CARD ======== */
-.product-card {
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: block;
-  margin: auto;
-}
-
-.product-card h2 {
-  font-size: 1.1em;
-  margin: 10px 0 5px;
-}
-
-.product-card p {
-  margin: 5px 0;
-}
-
-/* ======== CANTIDAD CONTROL ======== */
-.cantidad-control {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.cantidad-control button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  font-size: 1em;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cantidad-control button:hover {
-  background-color: #0056b3;
-}
-
-.cantidad {
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-/* ======== BOTÓN AÑADIR CARRITO ======== */
-.product-card button.agregar-carrito {
-  margin-top: 10px;
-  background-color: #28a745;
-  color: white;
-  padding: 7px 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.product-card button.agregar-carrito:hover {
-  background-color: #218838;
-}
-
-/* ======== BOTÓN VACIAR CARRITO ======== */
-#vaciarCarrito {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-#vaciarCarrito:hover {
-  background-color: #c82333;
-}
-
-/* ======== RESPONSIVE ======== */
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .product-grid,
-  .carrito-grid {
-    grid-template-columns: 1fr;
-  }
 }
