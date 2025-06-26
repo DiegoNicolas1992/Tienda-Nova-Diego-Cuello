@@ -1,26 +1,27 @@
 function cargarProductos(categoria) {
   fetch("data/productos.json")
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
-      const productos = data[categoria] || [];
-      const grid = document.querySelector(".product-grid");
-      if (!grid) return;
+      const productos = data[categoria];
+      mostrarProductos(productos);
+    });
+}
 
-      grid.innerHTML = productos.map(prod => `
-        <div class="product-card">
-          <img src="${prod.imagen}" alt="${prod.titulo}">
-          <h2>${prod.titulo}</h2>
-          <p>${prod.descripcion}</p>
-          <p><strong>$${prod.precio}</strong></p>
-          <div class="cantidad-control">
-            <button onclick="disminuir(this)">-</button>
-            <span class="cantidad">0</span>
-            <button onclick="aumentar(this)">+</button>
-          </div>
-        </div>
-      `).join('');
-    })
-    .catch(error => console.error("Error al cargar productos:", error));
+function mostrarProductos(productos) {
+  const grid = document.querySelector(".product-grid");
+  grid.innerHTML = productos.map(p => `
+    <div class="product-card">
+      <img src="${p.imagen}" alt="${p.titulo}">
+      <h2>${p.titulo}</h2>
+      <p>${p.descripcion}</p>
+      <p><strong>$${p.precio}</strong></p>
+      <div class="cantidad-control">
+        <button onclick="disminuir(this)">-</button>
+        <span class="cantidad">0</span>
+        <button onclick="aumentar(this)">+</button>
+      </div>
+    </div>
+  `).join("");
 }
 
 function aumentar(btn) {
@@ -30,6 +31,7 @@ function aumentar(btn) {
 
 function disminuir(btn) {
   const cantidad = btn.parentElement.querySelector(".cantidad");
-  const actual = parseInt(cantidad.textContent);
-  if (actual > 0) cantidad.textContent = actual - 1;
+  if (parseInt(cantidad.textContent) > 0) {
+    cantidad.textContent = parseInt(cantidad.textContent) - 1;
+  }
 }
