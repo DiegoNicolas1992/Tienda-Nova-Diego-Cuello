@@ -60,10 +60,12 @@ nav a:hover {
 
 .product-card img {
   max-width: 100%;
+  max-height: 200px;
   height: auto;
-  border-radius: 8px;
   display: block;
   margin: auto;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .product-card h2 {
@@ -81,7 +83,7 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
 .cantidad-control button {
@@ -103,39 +105,20 @@ nav a:hover {
   font-size: 1.1em;
 }
 
-/* ======== BOTÓN AGREGAR AL CARRITO ======== */
-.agregar-carrito {
+/* ======== BOTÓN AÑADIR AL CARRITO ======== */
+.product-card .add-to-cart {
   background-color: #28a745;
   color: white;
   border: none;
-  padding: 8px 15px;
-  font-size: 1em;
+  padding: 8px 12px;
+  margin-top: 10px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
-}
-
-.agregar-carrito:hover {
-  background-color: #218838;
-}
-
-/* ======== CARRITO ======== */
-#carrito-lista {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-#carrito-lista li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  font-size: 1em;
-}
-
-#total {
   font-weight: bold;
-  font-size: 1.2em;
-  margin-top: 15px;
+}
+
+.product-card .add-to-cart:hover {
+  background-color: #218838;
 }
 
 /* ======== RESPONSIVE ======== */
