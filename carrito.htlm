@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito - Tienda Nova</title>
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <script>
+    if (localStorage.getItem("usuarioLogueado") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <nav id="menuNav"></nav>
+
+  <div class="content">
+    <h1>🛒 Carrito de Compras</h1>
+    <div id="carrito-lista"></div>
+    <h2 id="total-carrito"></h2>
+    <button onclick="vaciarCarrito()" class="btn-carrito">Vaciar carrito</button>
+  </div>
+
+  <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
+
+  <script>
+    function mostrarCarrito() {
+      const contenedor = document.getElementById("carrito-lista");
+      const totalContenedor = document.getElementById("total-carrito");
+
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+      if (carrito.length === 0) {
+        contenedor.innerHTML = "<p>El carrito está vacío.</p>";
+        totalContenedor.textContent = "";
+        return;
+      }
+
+      let total = 0;
+
+      contenedor.innerHTML = carrito.map(item => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+        return `
+          <div class="product-card">
+            <h2>${item.titulo}</h2>
+            <p>Precio unitario: $${item.precio}</p>
+            <p>Cantidad: ${item.cantidad}</p>
+            <p><strong>Subtotal: $${subtotal}</strong></p>
+          </div>
+        `;
+      }).join("");
+
+      totalContenedor.textContent = `Total: $${total}`;
+    }
+
+    function vaciarCarrito() {
+      localStorage.removeItem("carrito");
+      mostrarCarrito();
+      alert("Carrito vaciado.");
+    }
+
+    mostrarCarrito();
+  </script>
+</body>
+</html>
 
