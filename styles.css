@@ -61,7 +61,8 @@ nav a:hover {
 .product-card img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  display: block;
+  margin: auto;
 }
 
 .product-card h2 {
@@ -111,10 +112,4 @@ nav a:hover {
   .product-grid {
     grid-template-columns: 1fr;
   }
-}
-.product-card img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
 }
