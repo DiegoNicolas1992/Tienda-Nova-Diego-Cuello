@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css">
-  
+  <title>Tienda Nova - Inicio</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <!-- Redirección si no está logueado -->
   <script>
-    // Redirección si el usuario no está logueado
     if (localStorage.getItem("usuarioLogueado") !== "true") {
       window.location.href = "login.html";
     }
@@ -18,7 +18,7 @@
 
   <div class="content">
     <h1>Bienvenido a Tienda Nova</h1>
-    <p>Productos destacados de cada categoría.</p>
+    <p>Productos destacados por categoría</p>
 
     <h2>📱 Electrónica</h2>
     <div class="product-grid" id="destacados-electronica"></div>
@@ -35,21 +35,21 @@
 
   <script src="scripts/productos.js"></script>
   <script>
-    // Mostrar el primer producto de cada categoría
     fetch("data/productos.json")
       .then(response => response.json())
       .then(data => {
-        mostrarDestacado("electronica", data.electronica, "destacados-electronica");
-        mostrarDestacado("ropa", data.ropa, "destacados-ropa");
-        mostrarDestacado("hogar", data.hogar, "destacados-hogar");
+        mostrarDestacados("electronica", data.electronica, "destacados-electronica");
+        mostrarDestacados("ropa", data.ropa, "destacados-ropa");
+        mostrarDestacados("hogar", data.hogar, "destacados-hogar");
       });
 
-    function mostrarDestacado(categoria, productos, contenedorID) {
+    function mostrarDestacados(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
       if (!contenedor || productos.length === 0) return;
 
-      const prod = productos[0]; // solo el primero
-      contenedor.innerHTML = `
+      const destacados = productos.slice(0, 3); // Muestra hasta 3 productos por categoría
+
+      contenedor.innerHTML = destacados.map(prod => `
         <div class="product-card">
           <img src="${prod.imagen}" alt="${prod.titulo}">
           <h2>${prod.titulo}</h2>
@@ -61,9 +61,8 @@
             <button onclick="aumentar(this)">+</button>
           </div>
         </div>
-      `;
+      `).join("");
     }
   </script>
 </body>
 </html>
-
