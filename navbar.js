@@ -1,15 +1,14 @@
 function cargarNavbar() {
-  const paginas = [
-    { titulo: "Home", url: "index.html" },
-    { titulo: "Electrónica", url: "electronica.html" },
-    { titulo: "Ropa", url: "ropa.html" },
-    { titulo: "Hogar", url: "hogar.html" },
-    { titulo: "Logout", url: "login.html" }
-  ];
+  fetch("data/menu.json")
+    .then(response => response.json())
+    .then(paginas => {
+      const menuNav = document.getElementById("menuNav");
+      if (!menuNav) return;
 
-  const nav = document.getElementById("menuNav");
-  nav.innerHTML = `
-    <span class="logo">🛒 Tienda Nova</span>
-    ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join('')}
-  `;
+      menuNav.innerHTML = `
+        <span class="logo">🛒 Tienda Nova</span>
+        ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join('')}
+      `;
+    })
+    .catch(error => console.error("Error al cargar el menú:", error));
 }
