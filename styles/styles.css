@@ -39,7 +39,8 @@ nav a:hover {
 }
 
 /* ======== PRODUCT GRID ======== */
-.product-grid {
+.product-grid,
+.carrito-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
@@ -103,20 +104,36 @@ nav a:hover {
   font-size: 1.1em;
 }
 
-/* ======== BOTÓN CARRITO ======== */
-.btn-carrito {
+/* ======== BOTÓN AÑADIR CARRITO ======== */
+.product-card button.agregar-carrito {
   margin-top: 10px;
   background-color: #28a745;
   color: white;
+  padding: 7px 14px;
   border: none;
-  padding: 8px 12px;
-  font-size: 0.9em;
-  border-radius: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.product-card button.agregar-carrito:hover {
+  background-color: #218838;
+}
+
+/* ======== BOTÓN VACIAR CARRITO ======== */
+#vaciarCarrito {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
   cursor: pointer;
 }
 
-.btn-carrito:hover {
-  background-color: #218838;
+#vaciarCarrito:hover {
+  background-color: #c82333;
 }
 
 /* ======== RESPONSIVE ======== */
@@ -126,7 +143,8 @@ nav a:hover {
     align-items: flex-start;
   }
 
-  .product-grid {
+  .product-grid,
+  .carrito-grid {
     grid-template-columns: 1fr;
   }
 }
