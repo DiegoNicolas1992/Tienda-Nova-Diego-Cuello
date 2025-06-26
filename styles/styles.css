@@ -51,7 +51,7 @@ nav a:hover {
   background-color: white;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -59,13 +59,12 @@ nav a:hover {
 }
 
 .product-card img {
-  max-width: 100%;
-  max-height: 200px;
-  height: auto;
+  width: 100%;
+  max-height: 180px; /* límite de alto para que no sean gigantes */
+  object-fit: cover; /* mantiene la proporción recortando si es necesario */
+  border-radius: 8px;
   display: block;
   margin: auto;
-  border-radius: 8px;
-  object-fit: cover;
 }
 
 .product-card h2 {
@@ -105,19 +104,19 @@ nav a:hover {
   font-size: 1.1em;
 }
 
-/* ======== BOTÓN AÑADIR AL CARRITO ======== */
-.product-card .add-to-cart {
+/* ======== BOTÓN CARRITO ======== */
+.agregar-carrito {
   background-color: #28a745;
   color: white;
   border: none;
-  padding: 8px 12px;
   margin-top: 10px;
+  padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
 }
 
-.product-card .add-to-cart:hover {
+.agregar-carrito:hover {
   background-color: #218838;
 }
 
