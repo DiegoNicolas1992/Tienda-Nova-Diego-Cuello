@@ -51,7 +51,7 @@ nav a:hover {
   background-color: white;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -103,7 +103,7 @@ nav a:hover {
   font-size: 1.1em;
 }
 
-/* ======== BOTÓN AÑADIR AL CARRITO ======== */
+/* ======== BOTÓN CARRITO ======== */
 .btn-carrito {
   margin-top: 10px;
   background-color: #28a745;
