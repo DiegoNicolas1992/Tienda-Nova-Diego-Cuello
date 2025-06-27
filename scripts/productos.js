@@ -9,7 +9,7 @@ function cargarProductos(categoria) {
 
 function mostrarProductos(productos) {
   const grid = document.querySelector(".product-grid");
-  grid.innerHTML = productos.map(p => `
+  grid.innerHTML = productos.map((p, index) => `
     <div class="product-card">
       <img src="${p.imagen}" alt="${p.titulo}">
       <h2>${p.titulo}</h2>
@@ -20,7 +20,7 @@ function mostrarProductos(productos) {
         <span class="cantidad">1</span>
         <button onclick="aumentar(this)">+</button>
       </div>
-      <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(p)})'>Añadir al carrito</button>
+      <button class="agregar-carrito" onclick='agregarAlCarrito(this, ${JSON.stringify(p)})'>Añadir al carrito</button>
     </div>
   `).join("");
 }
@@ -38,15 +38,17 @@ function disminuir(btn) {
   }
 }
 
-function agregarAlCarrito(producto) {
-  const cantidad = event.target.parentElement.querySelector(".cantidad").textContent;
+// ✅ Esta es la función corregida
+function agregarAlCarrito(boton, producto) {
+  const cantidad = parseInt(boton.parentElement.querySelector(".cantidad").textContent);
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
   const existente = carrito.find(p => p.titulo === producto.titulo);
 
   if (existente) {
-    existente.cantidad += parseInt(cantidad);
+    existente.cantidad += cantidad;
   } else {
-    carrito.push({ ...producto, cantidad: parseInt(cantidad) });
+    carrito.push({ ...producto, cantidad });
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
