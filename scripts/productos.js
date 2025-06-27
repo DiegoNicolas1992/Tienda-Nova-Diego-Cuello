@@ -9,7 +9,7 @@ function cargarProductos(categoria) {
 
 function mostrarProductos(productos) {
   const grid = document.querySelector(".product-grid");
-  grid.innerHTML = productos.map((p, index) => `
+  grid.innerHTML = productos.map(p => `
     <div class="product-card">
       <img src="${p.imagen}" alt="${p.titulo}">
       <h2>${p.titulo}</h2>
@@ -38,11 +38,9 @@ function disminuir(btn) {
   }
 }
 
-// ✅ Esta es la función corregida
 function agregarAlCarrito(boton, producto) {
   const cantidad = parseInt(boton.parentElement.querySelector(".cantidad").textContent);
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
   const existente = carrito.find(p => p.titulo === producto.titulo);
 
   if (existente) {
