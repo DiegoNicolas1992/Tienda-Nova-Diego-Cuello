@@ -11,7 +11,7 @@ function mostrarProductos(productos) {
   const grid = document.querySelector(".product-grid");
   grid.innerHTML = productos.map(p => `
     <div class="product-card">
-      <img src="${p.imagen}" alt="${p.titulo}" loading="lazy">
+      <img src="${p.imagen}" alt="${p.titulo}">
       <h2>${p.titulo}</h2>
       <p>${p.descripcion}</p>
       <p><strong>$${p.precio}</strong></p>
