@@ -5,21 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carrito - Tienda Nova</title>
   <link rel="stylesheet" href="styles/styles.css">
+  <script>
+    if (localStorage.getItem("usuarioLogueado") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
   <nav id="menuNav"></nav>
 
   <div class="content">
-    <h1>🛒 Carrito de compras</h1>
-    <div id="carrito-container"></div>
-    <p id="carrito-vacio" style="text-align:center;">Tu carrito está vacío.</p>
+    <h1>🛒 Tu carrito</h1>
+    <div id="contenedor-carrito" class="carrito-grid"></div>
+    <h2>Total: <span id="total-carrito">$0</span></h2>
   </div>
 
   <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
   <script src="scripts/carrito.js"></script>
-  <script>
-    cargarNavbar();
-    mostrarCarrito();
-  </script>
 </body>
 </html>
