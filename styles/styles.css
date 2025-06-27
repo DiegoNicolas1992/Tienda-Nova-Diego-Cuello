@@ -107,4 +107,13 @@ nav {
 .eliminar:hover {
   background-color: #c82333;
 }
-
+.product-card img,
+.carrito-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  aspect-ratio: 4 / 3;
+  background-color: #fff;
+  border-radius: 8px;
+  display: block;
+}
