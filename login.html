@@ -4,30 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css">
-
-  <script>
-    if (localStorage.getItem("usuarioLogueado") === "true") {
-      window.location.href = "index.html";
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-  </script>
+
+    .login-container h1 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 0.7em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 0.7em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <nav id="menuNav"></nav>
-
-  <div class="content">
-    <h1>Iniciar sesión</h1>
-    <p>Bienvenido. Hacé clic para entrar a Tienda Nova.</p>
-    <button onclick="login()">Iniciar sesión</button>
+  <div class="login-container">
+    <h1>Iniciar Sesión</h1>
+    <input type="text" id="usuario" placeholder="Usuario" />
+    <input type="password" id="clave" placeholder="Contraseña" />
+    <button onclick="iniciarSesion()">Ingresar</button>
   </div>
 
-  <script src="scripts/navbar.js"></script>
-  <script>cargarNavbar();</script>
-
   <script>
-    function login() {
-      localStorage.setItem("usuarioLogueado", "true");
-      window.location.href = "index.html";
+    function iniciarSesion() {
+      const usuario = document.getElementById("usuario").value;
+      const clave = document.getElementById("clave").value;
+
+      // Validación simple (podés mejorarla)
+      if (usuario === "admin" && clave === "1234") {
+        localStorage.setItem("usuarioLogueado", "true");
+        window.location.href = "index.html";
+      } else {
+        alert("Usuario o contraseña incorrectos");
+      }
     }
   </script>
 </body>
