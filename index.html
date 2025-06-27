@@ -1,1 +1,33 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda Nova</title>
+<link rel="stylesheet" href="styles/styles.css">
+<script>if(localStorage.getItem("usuarioLogueado")!=="true") window.location.href="pages/login.html";</script>
+</head>
+<body>
+  <nav id="menuNav"></nav>
+  <div class="content">
+    <h1>Bienvenido a Tienda Nova</h1>
+    <h2>📱 Electrónica</h2><div class="product-grid" id="destacados-electronica"></div>
+    <h2>👕 Ropa</h2><div class="product-grid" id="destacados-ropa"></div>
+    <h2>🏠 Hogar</h2><div class="product-grid" id="destacados-hogar"></div>
+  </div>
+  <script src="scripts/navbar.js"></script><script>cargarNavbar();</script>
+  <script src="scripts/productos.js"></script>
+  <script>
+    fetch("data/productos.json")
+      .then(res=>res.json())
+      .then(data=>{
+        mostrarDestacado("electronica",data.electronica,"destacados-electronica");
+        mostrarDestacado("ropa",data.ropa,"destacados-ropa");
+        mostrarDestacado("hogar",data.hogar,"destacados-hogar");
+      });
+    function mostrarDestacado(categoria, arr, id){
+      const c=document.getElementById(id); if(!c) return;
+      const p=arr[0];
+      c.innerHTML=`<div class="product-card"><img src="${p.imagen}" alt="${p.titulo}"><h2>${p.titulo}</h2><p>${p.descripcion}</p><p><strong>$${p.precio}</strong></p><div class="cantidad-control"><button onclick="disminuir(this)">-</button><span class="cantidad">0</span><button onclick="aumentar(this)">+</button></div><button onclick="agregarAlCarrito('${p.titulo}',${p.precio},'${p.imagen}',this)">Añadir</button></div>`;
+    }
+  </script>
+</body>
+</html>
