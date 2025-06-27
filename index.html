@@ -29,9 +29,7 @@
   </div>
 
   <script src="scripts/navbar.js"></script>
-  <script>
-    cargarNavbar();
-  </script>
+  <script>cargarNavbar();</script>
 
   <script src="scripts/productos.js"></script>
   <script>
@@ -45,9 +43,13 @@
 
     function mostrarDestacados(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
-      contenedor.innerHTML = productos.slice(0, 3).map((prod, index) => `
-        <div class="product-card">
-          <img src="${prod.imagen}" alt="${prod.titulo}" loading="lazy">
+      contenedor.innerHTML = "";
+
+      productos.slice(0, 3).forEach((prod, index) => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.titulo}">
           <h2>${prod.titulo}</h2>
           <p>${prod.descripcion}</p>
           <p><strong>$${prod.precio}</strong></p>
@@ -57,10 +59,38 @@
             <button onclick="aumentar(this)">+</button>
           </div>
           <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(prod)})'>Añadir al carrito</button>
-        </div>
-      `).join("");
+        `;
+        contenedor.appendChild(card);
+      });
+    }
+
+    function aumentar(btn) {
+      const cantidad = btn.parentElement.querySelector(".cantidad");
+      cantidad.textContent = parseInt(cantidad.textContent) + 1;
+    }
+
+    function disminuir(btn) {
+      const cantidad = btn.parentElement.querySelector(".cantidad");
+      const valor = parseInt(cantidad.textContent);
+      if (valor > 1) {
+        cantidad.textContent = valor - 1;
+      }
+    }
+
+    function agregarAlCarrito(producto) {
+      const cantidad = parseInt(event.target.parentElement.querySelector(".cantidad").textContent);
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const existente = carrito.find(p => p.titulo === producto.titulo);
+
+      if (existente) {
+        existente.cantidad += cantidad;
+      } else {
+        carrito.push({ ...producto, cantidad });
+      }
+
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      alert("Producto añadido al carrito.");
     }
   </script>
 </body>
 </html>
-
