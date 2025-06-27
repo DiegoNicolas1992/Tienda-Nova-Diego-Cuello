@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inicio - Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/styles.css" />
   <script>
     if (localStorage.getItem("usuarioLogueado") !== "true") {
       window.location.href = "login.html";
@@ -29,42 +29,38 @@
   </div>
 
   <script src="scripts/navbar.js"></script>
-  <script>cargarNavbar();</script>
+  <script>
+    cargarNavbar();
+  </script>
 
   <script src="scripts/productos.js"></script>
   <script>
     fetch("data/productos.json")
       .then(res => res.json())
       .then(data => {
-        mostrarDestacado("electronica", data.electronica, "destacados-electronica");
-        mostrarDestacado("ropa", data.ropa, "destacados-ropa");
-        mostrarDestacado("hogar", data.hogar, "destacados-hogar");
+        mostrarDestacados("electronica", data.electronica, "destacados-electronica");
+        mostrarDestacados("ropa", data.ropa, "destacados-ropa");
+        mostrarDestacados("hogar", data.hogar, "destacados-hogar");
       });
 
-    function mostrarDestacado(categoria, productos, contenedorID) {
+    function mostrarDestacados(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
-      if (!contenedor || !productos || productos.length === 0) return;
-
-      contenedor.innerHTML = "";
-
-      productos.slice(0, 3).forEach((producto, index) => {
-        const card = document.createElement("div");
-        card.classList.add("product-card");
-        card.innerHTML = `
-          <img src="${producto.imagen}" alt="${producto.titulo}">
-          <h2>${producto.titulo}</h2>
-          <p>${producto.descripcion}</p>
-          <p><strong>$${producto.precio}</strong></p>
+      contenedor.innerHTML = productos.slice(0, 3).map((prod, index) => `
+        <div class="product-card">
+          <img src="${prod.imagen}" alt="${prod.titulo}" loading="lazy">
+          <h2>${prod.titulo}</h2>
+          <p>${prod.descripcion}</p>
+          <p><strong>$${prod.precio}</strong></p>
           <div class="cantidad-control">
             <button onclick="disminuir(this)">-</button>
-            <span class="cantidad">0</span>
+            <span class="cantidad">1</span>
             <button onclick="aumentar(this)">+</button>
           </div>
-          <button class="add-cart" onclick="agregarAlCarrito('${categoria}', ${index})">Añadir al carrito</button>
-        `;
-        contenedor.appendChild(card);
-      });
+          <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(prod)})'>Añadir al carrito</button>
+        </div>
+      `).join("");
     }
   </script>
 </body>
 </html>
+
