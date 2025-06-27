@@ -4,15 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inicio - Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/styles.css">
   <script>
-    if (localStorage.getItem("usuarioLogueado") !== "true") {
+    // Redirigir al login si no hay sesión iniciada
+    if (sessionStorage.getItem("usuarioLogueado") !== "true") {
       window.location.href = "login.html";
     }
   </script>
 </head>
 <body>
   <nav id="menuNav"></nav>
+
+  <!-- Botón de cerrar sesión -->
+  <button onclick="cerrarSesion()" class="btn-cerrar-sesion">Cerrar sesión</button>
 
   <div class="content">
     <h1>Bienvenido a Tienda Nova</h1>
@@ -43,12 +47,8 @@
 
     function mostrarDestacados(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
-      contenedor.innerHTML = "";
-
-      productos.slice(0, 3).forEach((prod, index) => {
-        const card = document.createElement("div");
-        card.classList.add("product-card");
-        card.innerHTML = `
+      contenedor.innerHTML = productos.slice(0, 3).map((prod, index) => `
+        <div class="product-card">
           <img src="${prod.imagen}" alt="${prod.titulo}">
           <h2>${prod.titulo}</h2>
           <p>${prod.descripcion}</p>
@@ -59,37 +59,13 @@
             <button onclick="aumentar(this)">+</button>
           </div>
           <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(prod)})'>Añadir al carrito</button>
-        `;
-        contenedor.appendChild(card);
-      });
+        </div>
+      `).join("");
     }
 
-    function aumentar(btn) {
-      const cantidad = btn.parentElement.querySelector(".cantidad");
-      cantidad.textContent = parseInt(cantidad.textContent) + 1;
-    }
-
-    function disminuir(btn) {
-      const cantidad = btn.parentElement.querySelector(".cantidad");
-      const valor = parseInt(cantidad.textContent);
-      if (valor > 1) {
-        cantidad.textContent = valor - 1;
-      }
-    }
-
-    function agregarAlCarrito(producto) {
-      const cantidad = parseInt(event.target.parentElement.querySelector(".cantidad").textContent);
-      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      const existente = carrito.find(p => p.titulo === producto.titulo);
-
-      if (existente) {
-        existente.cantidad += cantidad;
-      } else {
-        carrito.push({ ...producto, cantidad });
-      }
-
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      alert("Producto añadido al carrito.");
+    function cerrarSesion() {
+      sessionStorage.removeItem("usuarioLogueado");
+      window.location.href = "login.html";
     }
   </script>
 </body>
