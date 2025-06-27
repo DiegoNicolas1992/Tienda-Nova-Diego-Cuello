@@ -4,15 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Electrónica - Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/styles.css">
   <script>
-    if (localStorage.getItem("usuarioLogueado") !== "true") {
+    if (sessionStorage.getItem("usuarioLogueado") !== "true") {
       window.location.href = "login.html";
     }
   </script>
 </head>
 <body>
   <nav id="menuNav"></nav>
+  <button onclick="cerrarSesion()" class="btn-cerrar-sesion">Cerrar sesión</button>
 
   <div class="content">
     <h1>📱 Electrónica</h1>
@@ -22,6 +23,13 @@
   <script src="scripts/navbar.js"></script>
   <script>cargarNavbar();</script>
   <script src="scripts/productos.js"></script>
-  <script>cargarProductos("electronica");</script>
+  <script>
+    cargarProductos("electronica");
+
+    function cerrarSesion() {
+      sessionStorage.removeItem("usuarioLogueado");
+      window.location.href = "login.html";
+    }
+  </script>
 </body>
 </html>
