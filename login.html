@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - Tienda Nova</title>
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/styles.css">
   <style>
     .login-container {
       max-width: 400px;
-      margin: 100px auto;
-      background-color: white;
+      margin: 5em auto;
       padding: 2em;
+      background-color: white;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
     .login-container h1 {
@@ -22,7 +22,7 @@
 
     .login-container input {
       width: 100%;
-      padding: 0.7em;
+      padding: 0.8em;
       margin-bottom: 1em;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -30,25 +30,26 @@
 
     .login-container button {
       width: 100%;
-      padding: 0.7em;
-      background-color: #007bff;
+      padding: 0.8em;
+      background-color: #28a745;
       color: white;
       border: none;
       border-radius: 5px;
-      font-weight: bold;
+      font-size: 1em;
       cursor: pointer;
     }
 
     .login-container button:hover {
-      background-color: #0056b3;
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
+
   <div class="login-container">
-    <h1>Iniciar Sesión</h1>
-    <input type="text" id="usuario" placeholder="Usuario" />
-    <input type="password" id="clave" placeholder="Contraseña" />
+    <h1>Iniciar sesión</h1>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="clave" placeholder="Contraseña">
     <button onclick="iniciarSesion()">Ingresar</button>
   </div>
 
@@ -57,14 +58,15 @@
       const usuario = document.getElementById("usuario").value;
       const clave = document.getElementById("clave").value;
 
-      // Validación simple (podés mejorarla)
+      // Simulación de usuario válido
       if (usuario === "admin" && clave === "1234") {
-        localStorage.setItem("usuarioLogueado", "true");
+        sessionStorage.setItem("usuarioLogueado", "true");
         window.location.href = "index.html";
       } else {
-        alert("Usuario o contraseña incorrectos");
+        alert("Usuario o contraseña incorrectos.");
       }
     }
   </script>
+
 </body>
 </html>
