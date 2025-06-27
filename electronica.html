@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrónica - Tienda Nova</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <script>
+    if (localStorage.getItem("usuarioLogueado") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <nav id="menuNav"></nav>
 
+  <div class="content">
+    <h1>Electrónica</h1>
+    <p>Descubrí nuestros productos electrónicos.</p>
+    <div class="product-grid"></div>
+  </div>
+
+  <script src="scripts/navbar.js"></script>
+  <script src="scripts/productos.js"></script>
+  <script>
+    cargarNavbar();
+    cargarProductos("electronica");
+  </script>
+</body>
+</html>
