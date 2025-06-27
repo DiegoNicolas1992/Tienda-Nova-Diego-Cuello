@@ -1,20 +1,18 @@
 function cargarNavbar() {
-  const paginas = [
-    { titulo: "Home", url: "index.html" },
-    { titulo: "Electrónica", url: "electronica.html" },
-    { titulo: "Ropa", url: "ropa.html" },
-    { titulo: "Hogar", url: "hogar.html" },
-    { titulo: "Carrito", url: "carrito.html" }
-  ];
-
   document.getElementById("menuNav").innerHTML = `
-    <span class="logo">🛒 Tienda Nova</span>
-    ${paginas.map(p => `<a href="${p.url}">${p.titulo}</a>`).join("")}
-    <a href="login.html" onclick="logout()" class="logout">Logout</a>
+    <ul class="navbar">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="ropa.html">Ropa</a></li>
+      <li><a href="electronica.html">Electrónica</a></li>
+      <li><a href="hogar.html">Hogar</a></li>
+      <li><a href="carrito.html">Carrito</a></li>
+      <li><a href="#" onclick="cerrarSesion()">Cerrar sesión</a></li>
+    </ul>
   `;
 }
 
-function logout() {
+function cerrarSesion() {
   localStorage.removeItem("usuarioLogueado");
+  localStorage.removeItem("carrito");
   window.location.href = "login.html";
 }
