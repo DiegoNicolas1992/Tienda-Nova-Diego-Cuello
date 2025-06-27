@@ -43,23 +43,27 @@
 
     function mostrarDestacado(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
-      const prod = productos[0];
-      if (!contenedor || !prod) return;
+      if (!contenedor || !productos || productos.length === 0) return;
 
-      contenedor.innerHTML = `
-        <div class="product-card">
-          <img src="${prod.imagen}" alt="${prod.titulo}">
-          <h2>${prod.titulo}</h2>
-          <p>${prod.descripcion}</p>
-          <p><strong>$${prod.precio}</strong></p>
+      contenedor.innerHTML = "";
+
+      productos.slice(0, 3).forEach((producto, index) => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <img src="${producto.imagen}" alt="${producto.titulo}">
+          <h2>${producto.titulo}</h2>
+          <p>${producto.descripcion}</p>
+          <p><strong>$${producto.precio}</strong></p>
           <div class="cantidad-control">
             <button onclick="disminuir(this)">-</button>
             <span class="cantidad">0</span>
             <button onclick="aumentar(this)">+</button>
           </div>
-          <button class="add-cart" onclick="agregarAlCarrito('${categoria}', 0)">Añadir al carrito</button>
-        </div>
-      `;
+          <button class="add-cart" onclick="agregarAlCarrito('${categoria}', ${index})">Añadir al carrito</button>
+        `;
+        contenedor.appendChild(card);
+      });
     }
   </script>
 </body>
