@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio - Tienda Nova</title>
   <link rel="stylesheet" href="styles/styles.css">
   <script>
-    if (sessionStorage.getItem("usuarioLogueado") !== "true") {
+    if (localStorage.getItem("usuarioLogueado") !== "true") {
       window.location.href = "login.html";
     }
   </script>
@@ -30,8 +30,6 @@
 
   <script src="scripts/navbar.js"></script>
   <script>cargarNavbar();</script>
-  <script src="scripts/footer.js"></script>
-  <script>cargarFooter();</script>
   <script src="scripts/productos.js"></script>
   <script>
     fetch("data/productos.json")
@@ -44,21 +42,26 @@
 
     function mostrarDestacados(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
-      contenedor.innerHTML = productos.slice(0, 3).map((p, index) => `
-        <div class="product-card">
-          <img src="${p.imagen}" alt="${p.titulo}">
-          <h2>${p.titulo}</h2>
-          <p>${p.descripcion}</p>
-          <p><strong>$${p.precio}</strong></p>
+      productos.slice(0, 3).forEach((prod, index) => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.titulo}">
+          <h2>${prod.titulo}</h2>
+          <p>${prod.descripcion}</p>
+          <p><strong>$${prod.precio}</strong></p>
           <div class="cantidad-control">
             <button onclick="disminuir(this)">-</button>
             <span class="cantidad">1</span>
             <button onclick="aumentar(this)">+</button>
           </div>
-          <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(p)})'>Añadir al carrito</button>
-        </div>
-      `).join("");
+          <button class="agregar-carrito" onclick='agregarAlCarrito(${JSON.stringify(prod)})'>Añadir al carrito</button>
+        `;
+        contenedor.appendChild(card);
+      });
     }
   </script>
+  <script src="scripts/footer.js"></script>
+  <script>cargarFooter();</script>
 </body>
 </html>
