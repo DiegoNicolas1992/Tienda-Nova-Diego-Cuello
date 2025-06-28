@@ -13,7 +13,6 @@
 </head>
 <body>
   <nav id="menuNav"></nav>
-  <button onclick="cerrarSesion()" class="btn-cerrar-sesion">Cerrar sesión</button>
 
   <div class="content">
     <h1>🛒 Tu carrito</h1>
@@ -23,12 +22,8 @@
 
   <script src="scripts/navbar.js"></script>
   <script>cargarNavbar();</script>
+  <script src="scripts/footer.js"></script>
+  <script>cargarFooter();</script>
   <script src="scripts/carrito.js"></script>
-  <script>
-    function cerrarSesion() {
-      sessionStorage.removeItem("usuarioLogueado");
-      window.location.href = "login.html";
-    }
-  </script>
 </body>
 </html>
