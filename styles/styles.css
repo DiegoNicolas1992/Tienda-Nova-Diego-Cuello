@@ -119,3 +119,32 @@ footer {
 .footer-content a:hover {
   text-decoration: underline;
 }
+footer {
+  background-color: #333;
+  color: white;
+  padding: 1.5em 0;
+  text-align: center;
+  margin-top: 3em;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.footer-links {
+  margin-top: 1em;
+}
+
+.footer-links a {
+  color: #ccc;
+  margin: 0 1em;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
