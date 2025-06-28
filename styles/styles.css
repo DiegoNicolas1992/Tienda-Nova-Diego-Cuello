@@ -118,4 +118,21 @@ nav {
     min-height: auto;
   }
 }
+footer {
+  background-color: #333;
+  color: white;
+  padding: 1.5em 0;
+  text-align: center;
+  margin-top: 2em;
+  font-size: 0.9em;
+}
 
+.footer-content a {
+  color: #ddd;
+  margin: 0 0.5em;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
