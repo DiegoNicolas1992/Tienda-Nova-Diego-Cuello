@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Tienda Nova</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - Tienda Nova</title>
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+  <nav id="menuNav"></nav>
+
   <div class="content">
-    <h1>Iniciar Sesión</h1>
-    <form onsubmit="login(event)">
-      <input type="text" placeholder="Usuario" id="usuario" required><br><br>
-      <input type="password" placeholder="Contraseña" id="clave" required><br><br>
+    <h1>🔐 Iniciar sesión</h1>
+    <form id="loginForm" class="login-form">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" name="usuario" required>
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+
       <button type="submit">Ingresar</button>
     </form>
+    <p id="mensaje-error" class="error"></p>
   </div>
 
+  <script src="scripts/navbar.js"></script>
+  <script>cargarNavbar();</script>
+
   <script>
-    function login(event) {
-      event.preventDefault();
+    const form = document.getElementById("loginForm");
+    const mensajeError = document.getElementById("mensaje-error");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
       const usuario = document.getElementById("usuario").value;
-      const clave = document.getElementById("clave").value;
-      if (usuario === "admin" && clave === "1234") {
+      const password = document.getElementById("password").value;
+
+      if (usuario === "admin" && password === "1234") {
         sessionStorage.setItem("usuarioLogueado", "true");
+        localStorage.setItem("nombreUsuario", usuario);
         window.location.href = "index.html";
       } else {
-        alert("Credenciales incorrectas.");
+        mensajeError.textContent = "Usuario o contraseña incorrectos.";
       }
-    }
+    });
   </script>
 
   <script src="scripts/footer.js"></script>
