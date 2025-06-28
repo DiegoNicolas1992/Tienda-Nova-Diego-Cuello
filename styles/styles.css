@@ -32,7 +32,6 @@ nav {
   margin: auto;
 }
 
-/* Grillas */
 .product-grid,
 .carrito-grid {
   display: grid;
@@ -41,7 +40,6 @@ nav {
   margin-top: 1em;
 }
 
-/* Tarjetas */
 .product-card,
 .carrito-item {
   background-color: white;
@@ -52,22 +50,20 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  min-height: 450px;
+  min-height: 450px; /* asegura altura uniforme */
 }
 
-/* Imágenes uniformes corregidas */
 .product-card img,
 .carrito-item img {
-  width: 100% !important;
-  height: 180px !important;
-  object-fit: contain !important;
+  width: 100%;
+  max-height: 140px; /* más chico que antes */
   aspect-ratio: 4 / 3;
-  background-color: #fff;
+  object-fit: cover;
   border-radius: 8px;
   display: block;
+  background-color: #f0f0f0;
 }
 
-/* Control de cantidad */
 .cantidad-control {
   display: flex;
   align-items: center;
@@ -82,7 +78,6 @@ nav {
   cursor: pointer;
 }
 
-/* Botones */
 .agregar-carrito,
 .eliminar {
   background-color: #28a745;
@@ -106,18 +101,6 @@ nav {
   background-color: #c82333;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .product-grid,
-  .carrito-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .product-card,
-  .carrito-item {
-    min-height: auto;
-  }
-}
 footer {
   background-color: #333;
   color: white;
