@@ -3,49 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión - Tienda Nova</title>
+  <title>Login - Tienda Nova</title>
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-  <nav id="menuNav"></nav>
-
   <div class="content">
-    <h1>🔐 Iniciar sesión</h1>
-    <form id="loginForm" class="login-form">
+    <h1>Iniciar sesión</h1>
+    <form onsubmit="return login(event)">
       <label for="usuario">Usuario:</label>
-      <input type="text" id="usuario" name="usuario" required>
-
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-
+      <input type="text" id="usuario" required>
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" required>
       <button type="submit">Ingresar</button>
     </form>
-    <p id="mensaje-error" class="error"></p>
   </div>
 
-  <script src="scripts/navbar.js"></script>
-  <script>cargarNavbar();</script>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Tienda Nova. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="ropa.html">Ropa</a>
+        <a href="electronica.html">Electrónica</a>
+        <a href="hogar.html">Hogar</a>
+        <a href="carrito.html">Carrito</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const form = document.getElementById("loginForm");
-    const mensajeError = document.getElementById("mensaje-error");
-
-    form.addEventListener("submit", function (e) {
+    function login(e) {
       e.preventDefault();
-      const usuario = document.getElementById("usuario").value;
-      const password = document.getElementById("password").value;
+      const user = document.getElementById("usuario").value;
+      const clave = document.getElementById("clave").value;
 
-      if (usuario === "admin" && password === "1234") {
+      if (user === "admin" && clave === "1234") {
         sessionStorage.setItem("usuarioLogueado", "true");
-        localStorage.setItem("nombreUsuario", usuario);
         window.location.href = "index.html";
       } else {
-        mensajeError.textContent = "Usuario o contraseña incorrectos.";
+        alert("Usuario o contraseña incorrectos.");
       }
-    });
+    }
   </script>
-
-  <script src="scripts/footer.js"></script>
-  <script>cargarFooter();</script>
 </body>
 </html>
