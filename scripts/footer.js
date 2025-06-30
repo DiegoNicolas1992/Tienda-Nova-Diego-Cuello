@@ -6,5 +6,12 @@ function cargarFooter() {
       <p>Desarrollado por Diego Cuello</p>
     </div>
   `;
-  document.body.appendChild(footer);
+  
+  // Agrega el footer ANTES del primer <script> del body (buena práctica)
+  const scripts = document.querySelectorAll("script");
+  if (scripts.length > 0) {
+    document.body.insertBefore(footer, scripts[0]);
+  } else {
+    document.body.appendChild(footer);
+  }
 }
