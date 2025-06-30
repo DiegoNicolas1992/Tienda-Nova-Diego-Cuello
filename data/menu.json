@@ -1,22 +1,8 @@
 [
-  {
-    "titulo": "Home",
-    "url": "index.html"
-  },
-  {
-    "titulo": "Electrónica",
-    "url": "electronica.html"
-  },
-  {
-    "titulo": "Ropa",
-    "url": "ropa.html"
-  },
-  {
-    "titulo": "Hogar",
-    "url": "hogar.html"
-  },
-  {
-    "titulo": "Logout",
-    "url": "login.html"
-  }
+  { "titulo": "Home", "url": "index.html" },
+  { "titulo": "Electrónica", "url": "electronica.html" },
+  { "titulo": "Ropa", "url": "ropa.html" },
+  { "titulo": "Hogar", "url": "hogar.html" },
+  { "titulo": "Carrito", "url": "carrito.html" },
+  { "titulo": "Logout", "url": "login.html" }
 ]
