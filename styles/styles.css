@@ -6,35 +6,48 @@ body {
   color: #333;
 }
 
-/* ========== NAVBAR ========== */
+/* ======== NAVBAR ======== */
 nav {
   background-color: #333;
-  padding: 1em;
+  padding: 1em 0;
 }
 
 .navbar {
   list-style: none;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 2em;
   margin: 0;
   padding: 0;
+}
+
+.navbar li {
+  margin: 0;
 }
 
 .navbar li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding: 0.5em 1em;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* ========== CONTENIDO PRINCIPAL ========== */
+.navbar li a:hover {
+  background-color: #555;
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* ======== CONTENIDO ======== */
 .content {
   padding: 2em;
   max-width: 1200px;
   margin: auto;
 }
 
-/* ========== GRID DE PRODUCTOS / CARRITO ========== */
+/* ======== GRILLAS DE PRODUCTOS Y CARRITO ======== */
 .product-grid,
 .carrito-grid {
   display: grid;
@@ -43,6 +56,7 @@ nav {
   margin-top: 1em;
 }
 
+/* ======== TARJETAS DE PRODUCTOS Y CARRITO ======== */
 .product-card,
 .carrito-item {
   background-color: white;
@@ -52,29 +66,23 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
   min-height: 450px;
   overflow: hidden;
-  transition: transform 0.2s ease;
 }
 
-.product-card:hover,
-.carrito-item:hover {
-  transform: scale(1.02);
-}
-
-/* ========== IMÁGENES DE PRODUCTO / CARRITO ========== */
+/* ======== IMÁGENES DE PRODUCTOS UNIFICADAS ======== */
 .product-card img,
 .carrito-item img {
   display: block;
   width: 100%;
-  max-height: 160px;
-  aspect-ratio: 4 / 3;
+  height: 160px;
   object-fit: cover;
   border-radius: 8px;
   background-color: #f0f0f0;
 }
 
-/* ========== CONTROLES DE CANTIDAD ========== */
+/* ======== CONTROLES DE CANTIDAD ======== */
 .cantidad-control {
   display: flex;
   align-items: center;
@@ -89,7 +97,7 @@ nav {
   cursor: pointer;
 }
 
-/* ========== BOTONES DE ACCIÓN ========== */
+/* ======== BOTONES ======== */
 .agregar-carrito,
 .eliminar {
   background-color: #28a745;
@@ -113,7 +121,7 @@ nav {
   background-color: #c82333;
 }
 
-/* ========== FOOTER ========== */
+/* ======== FOOTER ======== */
 footer {
   background-color: #333;
   color: white;
