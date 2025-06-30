@@ -35,8 +35,8 @@
   <script>
     function login(e) {
       e.preventDefault();
-      const user = document.getElementById("usuario").value;
-      const clave = document.getElementById("clave").value;
+      const user = document.getElementById("usuario").value.trim();
+      const clave = document.getElementById("clave").value.trim();
 
       if (user === "admin" && clave === "1234") {
         sessionStorage.setItem("usuarioLogueado", "true");
