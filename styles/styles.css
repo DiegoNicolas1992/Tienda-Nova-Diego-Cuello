@@ -6,48 +6,32 @@ body {
   color: #333;
 }
 
-/* ======== NAVBAR ======== */
 nav {
   background-color: #333;
-  padding: 1em 0;
+  padding: 1em;
 }
 
 .navbar {
   list-style: none;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 2em;
   margin: 0;
   padding: 0;
-}
-
-.navbar li {
-  margin: 0;
 }
 
 .navbar li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 0.5em 1em;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar li a:hover {
-  background-color: #555;
-  border-radius: 5px;
-  color: #fff;
-}
-
-/* ======== CONTENIDO ======== */
 .content {
   padding: 2em;
   max-width: 1200px;
   margin: auto;
 }
 
-/* ======== GRILLAS DE PRODUCTOS Y CARRITO ======== */
 .product-grid,
 .carrito-grid {
   display: grid;
@@ -56,7 +40,6 @@ nav {
   margin-top: 1em;
 }
 
-/* ======== TARJETAS DE PRODUCTOS Y CARRITO ======== */
 .product-card,
 .carrito-item {
   background-color: white;
@@ -65,24 +48,24 @@ nav {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
-  min-height: 450px;
   overflow: hidden;
 }
 
-/* ======== IMÁGENES DE PRODUCTOS UNIFICADAS ======== */
+/* ✅ ESTILO DEFINITIVO PARA IMÁGENES */
 .product-card img,
 .carrito-item img {
   display: block;
   width: 100%;
   height: 160px;
-  object-fit: cover;
+  object-fit: contain; /* Ajusta imagen sin recortarla */
   border-radius: 8px;
   background-color: #f0f0f0;
+  margin-bottom: 0.5em;
 }
 
-/* ======== CONTROLES DE CANTIDAD ======== */
+/* ✅ CONTROLES DE CANTIDAD Y BOTONES */
 .cantidad-control {
   display: flex;
   align-items: center;
@@ -97,7 +80,6 @@ nav {
   cursor: pointer;
 }
 
-/* ======== BOTONES ======== */
 .agregar-carrito,
 .eliminar {
   background-color: #28a745;
@@ -121,7 +103,7 @@ nav {
   background-color: #c82333;
 }
 
-/* ======== FOOTER ======== */
+/* ✅ FOOTER */
 footer {
   background-color: #333;
   color: white;
