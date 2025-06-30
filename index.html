@@ -56,7 +56,7 @@
 
     function mostrarDestacados(categoria, productos, contenedorID) {
       const contenedor = document.getElementById(contenedorID);
-      productos.slice(0, 3).forEach((prod, index) => {
+      productos.slice(0, 3).forEach((prod) => {
         const card = document.createElement("div");
         card.classList.add("product-card");
         card.innerHTML = `
